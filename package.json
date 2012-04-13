@@ -1,0 +1,32 @@
+{
+   "name": "node-prolog-swi",
+   "version": "0.1.0",
+   "main": "swipl",
+   "description": "A node.js interface to the SWI-Prolog library",
+   "keywords": [
+       "c++",
+       "swi",
+       "prolog"
+   ],
+   "author": {
+       "name": "Tom Klonikowski",
+       "email": "klonik_t@informatik.haw-hamburg.de"
+   }, 
+   "license": "LGPL",
+   "repository": {
+       "type": "git",
+       "url": "git@github.com:kloni/node-prolog-swi.git" 
+   }, 
+   "directories": {
+       "src": "src",
+       "tests": "tests"
+   },
+   "engines": {
+       "node": ">=0.6.0",
+       "libswipl": ">=5.10.0"
+   },
+   "scripts": {
+       "install": "node-waf configure build",
+       "test": "node tests/a.js"
+   }
+}
