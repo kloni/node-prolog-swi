@@ -21,7 +21,7 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-var swipl = require("./libswipl");
+var swipl = require("libswipl");
 
 function Module(mod) {
 	this.module_name = mod;
@@ -31,7 +31,7 @@ Module.prototype = {
 	module : function(mod) {
 		return new Module(mod);
 	},
-	
+
 	term_type : function(term) {
 		var r = swipl.term_type(term);
 		if(this.DEBUG) console.log("[libswipl] term_type: " + r + " " + term);
@@ -48,7 +48,7 @@ Module.prototype = {
 		var r = query.next_solution();
 		if (r) {
 			result = r;
-			if(this.DEBUG) console.log("[libswipl] call_predicate: " 
+			if(this.DEBUG) console.log("[libswipl] call_predicate: "
 					+ JSON.stringify(r));
 		} else {
 			var ex = query.exception();
