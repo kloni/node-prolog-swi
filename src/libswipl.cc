@@ -314,3 +314,4 @@ extern "C" void init(Handle<Object> target) {
 }
 
 NODE_MODULE(libswipl, init)
+

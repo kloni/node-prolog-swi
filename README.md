@@ -14,6 +14,16 @@ Missing SWI_HOME_DIR will result in
     [FATAL ERROR:
         Could not find system resources]
 
+Now builds with node-gyp (Thanks to Johny Jose): 
+
+    $ node-gyp configure
+    $ SWI_HOME_DIR=/usr/lib/swi-prolog node-gyp build 
+
+After building, try running:
+
+    $ SWI_HOME_DIR=/usr/lib/swi-prolog NODE_PATH=build/Release node tests/a.js
+
+
 If you like it, use and/or fork it. Corrections and improvements are welcome.
 
 Basic usage
@@ -21,7 +31,7 @@ Basic usage
 
 Initialization
 
-    var swipl = require('../swipl');
+    var swipl = require('swipl');
     swipl.initialise();
 
 Create module
@@ -56,3 +66,4 @@ Querying - Query
 Cleanup
 
     swipl.cleanup();
+
