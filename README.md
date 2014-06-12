@@ -67,3 +67,8 @@ Querying - Query
 Cleanup
 
     swipl.cleanup();
+
+License
+-------
+
+Licensed under LGPL a copy is available on [the LICENSE.txt file](LICENSE.txt).
