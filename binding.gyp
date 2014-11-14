@@ -8,7 +8,7 @@
       ],
       "include_dirs": [
         "./src",
-        "$(SWI_HOME_DIR)"
+        "$(SWI_HOME_DIR)/include"
       ],
       "direct_dependent_settings": {
         "linkflags": [

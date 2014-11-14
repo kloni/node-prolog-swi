@@ -21,7 +21,7 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-var swipl = require("libswipl");
+var swipl = require("./build/Release/libswipl");
 
 function Module(mod) {
 	this.module_name = mod;
