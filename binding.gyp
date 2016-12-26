@@ -17,6 +17,7 @@
         ]
       },
       "libraries": [
+        "-L$(SWI_LIB_DIR)",
         "-lswipl"
       ]
     }

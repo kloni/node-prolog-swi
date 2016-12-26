@@ -26,35 +26,49 @@
 
 #include <v8.h>
 #include <node.h>
+#include <node_object_wrap.h>
 #include <SWI-Prolog.h>
+#include "v8-util.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 using namespace v8;
 using namespace node;
+using namespace std;
 
-Handle<Value> Initialise(const Arguments& args);
-
-Handle<Value> TermType(const Arguments& args);
-
-Handle<Value> Cleanup(const Arguments& args);
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::String;
+using v8::Number;
+using v8::Persistent;
+using v8::Value;
+using v8::Null;
+using v8::HandleScope;
 
 class Query : public node::ObjectWrap {
  public:
   static const int OPEN = 1;
   static const int CLOSED = 0;
-  static void Init(v8::Handle<v8::Object> target);
+  static void Init(Local<Object> exports);
 
  private:
-  Query();
+  explicit Query();
   ~Query();
 
-  static v8::Handle<v8::Value> Open(const v8::Arguments& args);
-  static v8::Handle<v8::Value> NextSolution(const v8::Arguments& args);
-  static v8::Handle<v8::Value> Close(const v8::Arguments& args);
-  static v8::Handle<v8::Value> Exception(const v8::Arguments& args);
+  static void New(const FunctionCallbackInfo<Value>& args);
+  static void Open(const FunctionCallbackInfo<Value>& args);
+  static void NextSolution(const FunctionCallbackInfo<Value>& args);
+  static void Close(const FunctionCallbackInfo<Value>& args);
+  static void Exception(const FunctionCallbackInfo<Value>& args);
+
+  static v8::Persistent<v8::Function> constructor;
   int open;
   qid_t qid;
   term_t term;
-  Persistent<Object> varnames;
+  map<int, std::string> varnames;
   int term_len;
   int (*cb_log)(const char*, ...);
 };
